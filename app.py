@@ -80,7 +80,7 @@ tab_overview, tab_train, tab_advisor, tab_multi, tab_history = st.tabs(
 with tab_overview:
     col1, col2 = st.columns([2, 1])
     with col1:
-        st.markdown("## 🌾 Smart AgroSense – AI-Driven Smart Irrigation)
+        st.markdown("## 🌾 Smart AgroSense – AI-Driven Smart Irrigation")
         st.markdown(
             """
 
