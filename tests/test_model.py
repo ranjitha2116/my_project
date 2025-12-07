@@ -1,4 +1,4 @@
-import ai.train_model as train_model 
+from ai.train_model import train_and_save
 from ai.dataset_generator import generate_dataset
 
 
@@ -15,7 +15,7 @@ def test_dataset_shape():
 
 
 def test_model_training_and_prediction():
-    info = train_model.train_and_save()
+    info = strain_and_save()
     pipe = info["pipeline"]
     assert "r2" in info
     sample = {
