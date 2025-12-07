@@ -15,7 +15,7 @@ def test_dataset_shape():
 
 
 def test_model_training_and_prediction():
-    info = strain_and_save()
+    info = train_and_save()
     pipe = info["pipeline"]
     assert "r2" in info
     sample = {
