@@ -1,0 +1,39 @@
+name: SmartAgroSense CI/CD (No Growth Stage)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build-test-train-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest -q
+
+      - name: Train irrigation model
+        run: |
+          python -m ai.train_model
+
+      - name: Build Docker image
+        run: |
+          docker build -t smart-agrosense-nogrowth:latest .
+
+      - name: Smoke test Docker container
+        run: |
+          docker run --rm smart-agrosense-nogrowth:latest streamlit --version
