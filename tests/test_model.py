@@ -1,4 +1,4 @@
-from ai import train_model
+import ai.train_model as train_model 
 from ai.dataset_generator import generate_dataset
 
 
